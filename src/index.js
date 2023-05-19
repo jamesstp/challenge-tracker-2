@@ -1,12 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
-import '../src/index.css'
+import reportWebVitals from './reportWebVitals';
 
-const DATA = [
-    {id: "todo-0", name: "HTML, CSS, and Git: Code Refactor", completed: true},
-    {id: "todo-1", name: "Advanced CSS: Portfolio", completed: false },
-    {id: "todo-2", name: "JavaScript: Password Generator", completed: false },
-];
-console.log(DATA)
-ReactDOM.render(<App tasks={DATA} />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
