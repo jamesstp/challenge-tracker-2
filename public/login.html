@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* RESETS */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      *:focus {
+        outline: 3px dashed #228bec;
+        outline-offset: 0;
+      }
+      html {
+        font: 62.5% / 1.15 sans-serif;
+      }
+      h1,
+      h2 {
+        margin-bottom: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      button {
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        overflow: visible;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        line-height: normal;
+        -webkit-font-smoothing: inherit;
+        -moz-osx-font-smoothing: inherit;
+        appearance: none;
+      }
+      button::-moz-focus-inner {
+        border: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      input {
+        overflow: visible;
+      }
+      input[type='text'] {
+        border-radius: 0;
+      }
+      /* Login Page Specific Styles */
+      body {
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 2.4rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        margin-bottom: 0.4rem;
+      }
+      input[type='text'],
+      input[type='password'] {
+        padding: 0.8rem 1rem 0.7rem;
+        border: 0.2rem solid #4d4d4d;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+      button[type='submit'] {
+        padding: 0.8rem 1rem 0.7rem;
+        border: 0.2rem solid #4d4d4d;
+        cursor: pointer;
+        text-transform: capitalize;
+        width: 100%;
+      }
+      button#backButton {
+        padding: 0.8rem 1rem 0.7rem;
+        border: 0.2rem solid #4d4d4d;
+        cursor: pointer;
+        text-transform: capitalize;
+        width: 200px;
+        margin-top: 1rem;
+      }
+    </style>
+    <title>Login or Sign Up</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form id="loginForm">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+      </div>
+      <div>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+      <div>
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" required />
+      </div>
+      <div>
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" required />
+      </div>
+      <div>
+        <button type="submit">Sign Up</button>
+      </div>
+    </form>
+
+    <button id="backButton">Back</button>
+    <!-- Back button -->
+
+    <script>
+      // Handle login form submission
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get the entered username and password
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Send an AJAX request to your server for authentication
+        // Replace the URL with your server endpoint for login
+        fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              // Authentication successful
+              return response.json();
+            } else {
+              // Authentication failed
+              throw new Error('Login failed');
+            }
+          })
+          .then((data) => {
+            // Handle successful login response
+            console.log('Logged in:', data);
+            // Save the JWT token and perform any necessary redirects or UI updates
+          })
+          .catch((error) => {
+            // Handle login error
+            console.error('Login error:', error);
+            // Display error message to the user, e.g., show an error div on the page
+          });
+      });
+
+      // Handle sign-up form submission
+      document.getElementById('signupForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get the entered username and password for sign-up
+        const signupUsername = document.getElementById('signupUsername').value;
+        const signupPassword = document.getElementById('signupPassword').value;
+
+        // Send an AJAX request to your server for sign-up
+        // Replace the URL with your server endpoint for sign-up
+        fetch('/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username: signupUsername, password: signupPassword }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              // Sign-up successful
+              return response.json();
+            } else {
+              // Sign-up failed
+              throw new Error('Sign-up failed');
+            }
+          })
+          .then((data) => {
+            // Handle successful sign-up response
+            console.log('Signed up:', data);
+            // Perform any necessary redirects or UI updates after successful sign-up
+          })
+          .catch((error) => {
+            // Handle sign-up error
+            console.error('Sign-up error:', error);
+            // Display error message to the user, e.g., show an error div on the page
+          });
+      });
+      // Handle back button click event
+      document.getElementById('backButton').addEventListener('click', function () {
+        // Go back to the previous page
+        window.history.back();
+      });
+    </script>
+  </body>
+</html>

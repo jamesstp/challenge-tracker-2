@@ -2,6 +2,9 @@
   "name": "00-practice-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.1.0",
@@ -10,7 +13,10 @@
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.6.0",
     "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.3.1",
     "nanoid": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
