@@ -9,11 +9,10 @@ import About from './components/About';
 
 function App() {
 	const [showAddTask, setShowAddTask] = useState(false);
-
 	const [tasks, setTasks] = useState([]);
 
 	useEffect(() => {
-		//Get Tasks
+		// Get Tasks
 		const getTasks = async () => {
 			const taskFromServer = await fetchTasks();
 			setTasks(taskFromServer);
@@ -22,23 +21,21 @@ function App() {
 		getTasks();
 	}, []);
 
-	// Fetch Task
+	// Fetch Tasks
 	const fetchTasks = async () => {
 		const res = await fetch('http://localhost:9090/tasks');
 		const data = await res.json();
-
 		return data;
 	};
 
-	// Fetch single Task
+	// Fetch Single Task
 	const fetchTask = async (id) => {
 		const res = await fetch(`http://localhost:9090/tasks/${id}`);
 		const data = await res.json();
-
 		return data;
 	};
 
-	//Toggle Reminder
+	// Toggle Reminder
 	const toggleReminder = async (id) => {
 		const taskToToggle = await fetchTask(id);
 		const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
@@ -54,7 +51,7 @@ function App() {
 		setTasks(tasks.map((task) => (task.id === id ? { ...task, reminder: data.reminder } : task)));
 	};
 
-	//Add Task
+	// Add Task
 	const addTask = async (task) => {
 		const res = await fetch(`http://localhost:9090/tasks`, {
 			method: 'POST',
@@ -64,11 +61,6 @@ function App() {
 
 		const data = await res.json();
 		setTasks([...tasks, data]);
-
-		// const id = Math.floor(Math.random() * 10000) + 1
-		// const newTask = { id, ...task }
-
-		// setTasks([...tasks, newTask])
 	};
 
 	// Delete Task
@@ -85,7 +77,6 @@ function App() {
 				<Routes>
 					<Route
 						path='/'
-						exact
 						element={
 							<>
 								{showAddTask && <AddTask onAdd={addTask} />}
@@ -98,7 +89,6 @@ function App() {
 					/>
 
 					<Route path='/about' element={<About />} />
-					{/* <Route path='/about' component={About} /> */}
 				</Routes>
 
 				<Footer />
