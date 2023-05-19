@@ -2,54 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
-
 :root {
   --themeC: #7500ff;
   --clb: #7500ff21;
   --black: #00000059;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-  padding: 50px;
-  backdrop-filter: blur(15px);
-}
-
-.centered {
-  justify-content: center;
-  /* center items horizontally, in this case */
-  align-items: center;
-  /* center items vertically, in this case */
-  display: flex;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #71fcaa;
-}
-
-.sun {
-  display: flex;
-  justify-content: center;
-  /* center items horizontally, in this case */
-  align-items: center;
-  /* center items vertically, in this case */
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  right: 100px;
-  background: orange;
-  box-shadow: 0 0 10px orange,
-    0 0 60px orange,
-    0 0 200px yellow,
-    inset 0 0 80px yellow;
-  z-index: 12;
-  z-index: -99;
 }
 
 * {
@@ -57,12 +13,6 @@ a:hover {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-}
-
-.flexc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 body {
@@ -76,19 +26,14 @@ body {
   background-image: url('./assets/task_tracker_bg.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* background-size: 250vh 100vh; */
 }
 
 .container {
-  position: relative;
   width: 500px;
   margin: 1px auto;
-  /* overflow: auto; */
   min-height: 500px;
   border: 1px solid #000000;
   padding-bottom: 60px;
-  /* padding: 20px 30px; */
-  /* border-radius: 5px; */
   background-color: var(--black);
   backdrop-filter: blur(50px);
   user-select: none;
@@ -103,11 +48,6 @@ body {
   padding: 20px 30px;
 }
 
-h1,
-h4 {
-  font-weight: 500;
-}
-
 h4 {
   font-size: 15px;
 }
@@ -116,14 +56,12 @@ h4 {
   background: #000;
   width: 45px;
   height: 45px;
-
   color: #fff;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   text-decoration: none;
   font-size: 15px;
-  font-family: inherit;
 }
 
 .btn:focus {
@@ -139,25 +77,11 @@ h4 {
   width: 100%;
   height: 60px;
   font-size: 18px;
-  border-radius: 0px;
+  border-radius: 0;
   transition: 0.2s ease;
 }
 
-.taskAddBtn:hover {
-  opacity: .5;
-}
-
-.btn-block:hover {
-  background: #000000;
-}
-
-.noTask {
-  margin: 40px 0 20px;
-  text-align: center;
-}
-
 .task {
-  /* background: #ff000031; */
   margin: 30px;
   height: 70px;
   cursor: pointer;
@@ -176,10 +100,6 @@ h4 {
   border-left: 5px solid var(--themeC);
 }
 
-.task.reminder h3 {
-  color: var(--themeC);
-}
-
 .task_content {
   flex-direction: column;
   align-items: flex-start;
@@ -195,7 +115,7 @@ h4 {
   justify-content: space-between;
 }
 
-.task_content>p {
+.task_content > p {
   margin-top: 7px;
   text-align: left;
   font-style: italic;
@@ -215,7 +135,6 @@ h4 {
 }
 
 .add-form {
-  background: rgb(0, 0, 0);
   background: linear-gradient(180deg, #2705ff1f 0%, #0000 100%);
   padding: 20px 30px;
 }
@@ -234,7 +153,6 @@ h4 {
   width: 100%;
   height: 40px;
   margin-top: 5px;
-  /* padding: 3px 7px; */
   color: #ffffff;
   font-size: 17px;
   font-family: inherit;
@@ -263,7 +181,7 @@ h4 {
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   height: 30px;
   padding: 30px;
   font-size: 12px;
@@ -271,7 +189,6 @@ h4 {
 }
 
 .link {
-  /* color: var(--themeC); */
   font-size: 12px;
   transition: 0.2s ease;
 }
